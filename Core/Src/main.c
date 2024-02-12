@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +56,20 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int _write(int file, char *ptr, int len) {
+  int i=0;
+  for(i=0; i<len; i++) 
+    HAL_UART_Transmit(&huart2,ptr++,1,1000);
+  return len;
+}
 
+void wait_iters(int iterations) {
+  for (int i=0; i<iterations; i++);
+}
+
+void wait_seconds(int seconds) {
+  for (uint32_t start_time = HAL_GetTick(); HAL_GetTick() < start_time + seconds*1e3; );
+}
 /* USER CODE END 0 */
 
 /**
@@ -97,7 +110,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    
+    uint32_t tick = HAL_GetTick();
+    printf("tick: %d\r\n", tick);
+    wait_seconds(1);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

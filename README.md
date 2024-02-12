@@ -10,5 +10,5 @@
 
 | Exercise   | Status |
 | ---------- | :----: |
-| Exercise 1 |   -    |
-| Exercise 2 |   -    |
+| Exercise 1 |  Done  |
+| Exercise 2 |  Done  |
